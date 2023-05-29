@@ -58,8 +58,6 @@ def main():
             with open('emails/message'+ str(i)+'.png', 'wb') as f:
                 f.write(eml2png.to_png('emails/email' + str(i) + '.eml'))
             i += 1
-            # os.path.join(os.getcwd(), '/emails/', 'email' + str(i) + '.eml')
-            # os.path.join(os.getcwd(), '/emails/', 'message'+ str(i)+'.png')
 
 
     except HttpError as error:
