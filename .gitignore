@@ -1,0 +1,6 @@
+# ignore these files
+/credentials.json
+/token.json
+
+# ignore emails
+emails/
