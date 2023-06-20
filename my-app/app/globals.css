@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --white: #fcfcfc;
+  --lightGray: #d8d8d8;
+  --blueGray: #5D737E;
+  --brown: #30292F;
+  --gray: #3F4045;
+  --black: #02111B;
+  --theme: #009641;
+  background-color: var(--lightGray);
+}
+
+.title {
+  padding-left: 10%;
+  font-size: 48px;
+  font-weight: bold;
+  font-family: var(--font-inter);
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  color: var(--theme);
+  width: 100%;
+  background-color: var(--black);
+}
