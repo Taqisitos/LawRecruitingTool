@@ -1,14 +1,20 @@
 from __future__ import print_function
-
 import os.path
 import base64
 
+# Google Firebase
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+
+# Gmail API
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+# email-to-image tools
 from pdf2image import convert_from_path
 import eml2png
 
@@ -16,9 +22,11 @@ import eml2png
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/documents']
 
 def main():
-    """Shows basic usage of the Gmail API.
-    Lists the user's Gmail labels.
-    """
+    # initialize firebase client
+    cred = credentials.Certificate("firebase-creds.json")
+    fbApp = firebase_admin.initialize_app(cred)
+    
+    # -----FROM GOOGLE DOCUMENTATION QUICKSTART------
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
@@ -36,20 +44,20 @@ def main():
         # Save the credentials for the next run
         with open('token.json', 'w') as token:
             token.write(creds.to_json())
+    # -----------------------------------------------
 
     try:
-        # Call the Gmail API - in this case, getting emails in inbox
+        # Gmail API - get 10 emails from primary inbox
         service = build('gmail', 'v1', credentials=creds)
         resultsMessages = service.users().messages().list(userId='me', labelIds=['INBOX'], q="category:primary", maxResults=10).execute()
         messages = resultsMessages.get('messages', [])
-
         if not messages:
             print('No emails found.')
             return
         
+        # for each email, convert to and store as an image
         i = 0
         for message in messages:
-            # write each subject into doc
             id = message["id"]
             msg = service.users().messages().get(userId='me', id=id, format='raw', metadataHeaders=None).execute()
             raw = base64.urlsafe_b64decode(msg['raw'])
@@ -63,6 +71,10 @@ def main():
     except HttpError as error:
         # API failed
         print(f'Http error wtv that means: {error}')
+
+
+
+
 
 
 

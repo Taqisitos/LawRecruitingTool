@@ -1,6 +1,7 @@
 # ignore these files
 /credentials.json
 /token.json
+/firebase-creds.json
 
 # ignore emails
 emails/

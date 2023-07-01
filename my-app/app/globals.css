@@ -4,17 +4,17 @@
 
 :root {
   --white: #fcfcfc;
-  --lightGray: #d8d8d8;
+  --lightGray: #f0f0f0;
   --blueGray: #5D737E;
   --brown: #30292F;
-  --gray: #3F4045;
-  --black: #02111B;
-  --theme: #009641;
+  --gray: #747474;
+  --black: #000000;
+  --theme: #0093fc;
   background-color: var(--lightGray);
 }
 
 .title {
-  padding-left: 10%;
+  padding-left: 15%;
   font-size: 48px;
   font-weight: bold;
   font-family: var(--font-inter);

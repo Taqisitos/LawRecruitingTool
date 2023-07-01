@@ -1,9 +1,9 @@
 .emailPic {
     margin-top: 15px;
     margin-bottom: 40px;
-    width: 80%;
+    width: 100%;
     border-style: solid;
-    border-color: var(--theme);
+    border-color: var(--gray);
     border-width: 10px;
     border-radius: 15px;
 }

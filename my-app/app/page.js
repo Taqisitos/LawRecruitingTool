@@ -14,6 +14,7 @@ const styles = {
 		alignItems: 'center',
 	}
 }
+  
 
 export default function Home() {
   return (
@@ -23,9 +24,7 @@ export default function Home() {
 			<div>Here's all emails with private positions</div>
       	</div>
       	<div style={styles.emailList}>
-			<Email emailPic={msg}/>
-			<Email emailPic={msg1}/>
-			<Email emailPic={msg2}/>
+			<Email/>
       	</div>
     </main>
   )
